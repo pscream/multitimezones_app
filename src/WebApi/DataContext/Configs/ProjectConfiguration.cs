@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using WebApi.Models;
+using WebApi.Models.Database;
 
 namespace WebApi.DataContext.Configs
 {

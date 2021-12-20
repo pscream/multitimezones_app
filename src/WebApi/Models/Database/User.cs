@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Models
+namespace WebApi.Models.Database
 {
 
      public class User

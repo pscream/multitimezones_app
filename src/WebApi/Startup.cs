@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 using WebApi.DataContext;
+using WebApi.Models.Mapping;
 
 namespace WebApi
 {
@@ -27,11 +29,27 @@ namespace WebApi
                     builder.UseSqlServer(Configuration.GetConnectionString("Connection"));
                 }
             );
+
+            services.AddAutoMapper(i =>
+            {
+                i.AddProfile(typeof(ProjectProfile));
+            });
+
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
 
     }
