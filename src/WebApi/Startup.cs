@@ -32,7 +32,9 @@ namespace WebApi
 
             services.AddAutoMapper(i =>
             {
+                i.AddProfile(typeof(UserProfile));
                 i.AddProfile(typeof(ProjectProfile));
+                i.AddProfile(typeof(TicketProfile));
             });
 
             services.AddControllers();

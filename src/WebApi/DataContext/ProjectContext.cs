@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 
-using WebApi.Models;
+using WebApi.Models.Database;
 using WebApi.DataContext.Configs;
 
 namespace WebApi.DataContext
 {
-    
+
     public class ProjectContext : DbContext
     {
 
@@ -21,7 +21,10 @@ namespace WebApi.DataContext
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
         }
+
+        public DbSet<Ticket> Tickets { get; set; }
 
     }
 

@@ -2,18 +2,21 @@ using System;
 
 namespace WebApi.Models.Responses
 {
-         public class Project
+         public class Ticket
     {
         
         public Guid Id { get; set; }
 
+        public Guid ProjectId { get; set; }
+
+        public Project Project { get; set; }
+
         public string Code { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? TransactionDate { get; set; }
 
-        public DateTime EndDate { get; set; }
-
-        public DateTime? CreatedDate { get; set; }
+        public DateTimeOffset? ReceivedOn { get; set; }
+        public DateTime? ReceivedOnUtc { get; set; }
 
         public DateTimeOffset? UpdatedOn { get; set; }
         public DateTime? UpdatedOnUtc { get; set; }
